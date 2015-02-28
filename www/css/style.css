@@ -1,0 +1,19 @@
+/* Empty. Add your own CSS if you like */
+ .bar-header.has-tabs-top{
+     background: rgb(56, 126, 245) !important;
+}
+ .bar-header.has-tabs-top {
+     background: rgb(56, 126, 245) !important;
+}
+ ion-header-bar {
+     background: rgb(56, 126, 245) !important;
+}
+ .bar.bar-stable .title {
+     color: white !important;
+     font-size: x-large !important;
+     background: rgb(56, 126, 245) !important;
+}
+ .ion-fireball{
+     color: white !important;
+}
+ 
