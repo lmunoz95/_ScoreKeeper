@@ -2,20 +2,19 @@
     <ion-content>
         <div class="list list-inset">
             <label class="item item-input">
-                <input type="text" placeholder="Game Name">
+                <input type="text" placeholder="Game Name" name="name" ng-model="game.name">
             </label>
             <label class="item item-input">
-                <input type="text" placeholder="Game Subject">
+                <input type="text" placeholder="Game Subject" name="subjet" ng-model="game.subject">
             </label>
         </div>
-        
     </ion-content>
     <ion-footer-bar align-title="left" >
         <div class="button-bar">
-            <button class="button button-positive" style="width: 50%;">
+            <button class="button button-positive" style="width: 50%;" ng-click="saveTypeGame()">
                 Save
             </button>
-            <button class="button button-assertive" style="width: 50%;">
+            <button class="button button-assertive" style="width: 50%;" ng-click="cancelTypeGame()">
                 Cancel
             </button>
         </div>
