@@ -21,7 +21,8 @@ angular.module('starter', ['ionic', 'starter.sqlService','starter.controllers', 
             // org.apache.cordova.statusbar required
             StatusBar.styleDefault();
         }
-debugger;
+        
+        //$cordovaSQLite.deleteDB(dbConfig.name);
         DB.init();
 
     });

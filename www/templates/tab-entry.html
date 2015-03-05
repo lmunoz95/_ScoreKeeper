@@ -5,35 +5,33 @@
                 <div class="input-label">
                     First Team
                 </div>
-                <select>
-                    <option>Teener</option>
-                    <option selected>Dark Teener</option>
-                    <option>Loco</option>
+                <select ng-model="firstTeam" ng-options="team as team.name for team in FirstTeams" ng-Click="updateFirstTeams()">
+                    <option value="">-- Select Team --</option>
                 </select>
             </label>
-            
             <label class="item item-input item-select">
                 <div class="input-label">
                     Second Team
                 </div>
-                <select>
-                    <option>Ramones</option>
-                    <option selected>Los Peres</option>
-                    <option>Los Detrosadores</option>
+                <select ng-model="secondTeam" ng-options="team as team.name for team in SecondTeams" ng-Click="updateSecondTeams()">
+                    <option value="">-- Select Team --</option>
                 </select>
             </label>
-            
             <label class="item item-input item-select">
                 <div class="input-label">
                     Type Game
                 </div>
-                <select>
-                    <option>Basket</option>
-                    <option selected>Dominoes</option>
-                    <option>Football</option>
+                <select ng-model="gameType" ng-options="game as game.name for game in GameTypes" ng-Click="updateGameTypes()">
+                    <option value="">-- Select GameType --</option>
                 </select>
             </label>
-            
+
+            value for {{firstTeam.name}}.
+
+
+            <button class="button button-block button-assertive" ng-Click="startGame()">
+                Start Game
+            </button>
         </div>
     </ion-content>
 </ion-view>

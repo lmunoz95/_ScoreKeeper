@@ -1,19 +1,19 @@
 var dbConfig = {
     name: 'ScoreKeeper.db',
-    tables :[
+    tables: [
         {
             name: 'game_type',
-            columns :[
-                { 
-                    name : 'id',
+            columns: [
+                {
+                    name: 'id',
                     type: 'integer primary key'
                 },
-                { 
-                    name : 'name',
+                {
+                    name: 'name',
                     type: 'text'
                 },
-                { 
-                    name : 'subject',
+                {
+                    name: 'subject',
                     type: 'text'
                 }
             ]
@@ -21,17 +21,17 @@ var dbConfig = {
 
         {
             name: 'team',
-            columns :[
-                { 
-                    name : 'id',
+            columns: [
+                {
+                    name: 'id',
                     type: 'integer primary key'
                 },
-                { 
-                    name : 'name',
+                {
+                    name: 'name',
                     type: 'text'
                 },
-                { 
-                    name : 'subject',
+                {
+                    name: 'subject',
                     type: 'text'
                 }
             ]
@@ -39,23 +39,37 @@ var dbConfig = {
 
         {
             name: 'entry',
-            columns :[
-                { 
-                    name : 'id',
+            columns: [
+                {
+                    name: 'id',
                     type: 'integer primary key'
                 },
-                { 
-                    name : 'id_team1',
+                {
+                    name: 'id_first_team',
                     type: 'integer'
                 },
-                { 
-                    name : 'id_team2',
+                {
+                    name: 'id_second_team',
                     type: 'integer'
                 },
-                { 
-                    name : 'game_type_id',
+                {
+                    name: 'game_type_id',
                     type: 'integer'
+                },
+                {
+                    name: 'score_first_team',
+                    type: 'integer'
+                }, 
+                {
+                    name: 'score_second_team',
+                    type: 'integer'
+                },
+                {
+                    name: 'finish_flag',
+                    type: 'boolean'
                 }
+                
+                
             ]
         }
     ]

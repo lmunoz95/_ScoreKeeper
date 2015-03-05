@@ -1,5 +1,30 @@
 <ion-view view-title="Main">
     <ion-content>
-        
+        <ion-list>
+            <ion-item>
+                <div class="card">
+                    <div class="item ">
+                        This is a basic Card which contains an item that has wrapping text.
+                    </div>
+                </div>
+            </ion-item>
+            <div class="row">
+                <div class="col col-50">
+                    <div class="card">
+                        <div class="item ">
+                            This is a basic Card which contains an item that has wrapping text.
+                        </div>
+                    </div>
+                </div>
+                <div class="col col-50">
+                    <div class="card">
+                        <div class="item ">
+                            <input type="text" ng-model="name"><br>
+                            <span ng-bind="name" >Hola</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </ion-list>
     </ion-content>
 </ion-view>
