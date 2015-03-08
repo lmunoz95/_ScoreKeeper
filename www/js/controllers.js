@@ -68,53 +68,62 @@ angular.module('starter.controllers', ['starter.sqlService'])
 })
 
 
-.controller('EntryCtrl', function ($scope, Teams, GameTypes) {
-    $scope.firstTeam = '';
-    $scope.secondTeam = '';
-    $scope.gameTypeameType = '';
+.controller('EntryCtrl', function ($scope, $state, Teams, GameTypes, Entries) {
+
 
     $scope.FirstTeams = [];
     $scope.SecondTeams = [];
     $scope.GameTypes = [];
 
+    $scope.entry = {
+        firstTeam: '',
+        secondTeam: '',
+        gameType: ''
 
-    $scope.updateFirstTeams = function (){
+    }
+
+
+    $scope.updateFirstTeams = function () {
+
         Teams.getAll().then(function (result) {
             $scope.FirstTeams = [];
 
             for (var i = 0; i < result.rows.length; i++) {
                 var source = {
-                    id:result.rows.item(i).id,
-                    name : result.rows.item(i).name,
+                    id: result.rows.item(i).id,
+                    name: result.rows.item(i).name,
                     subject: result.rows.item(i).subject
                 };
 
                 $scope.FirstTeams.push(source);
             }
+
+
         });
 
     }
 
-    $scope.updateSecondTeams = function (){
+    $scope.updateSecondTeams = function () {
         Teams.getAll().then(function (result) {
             $scope.SecondTeams = [];
 
 
             for (var i = 0; i < result.rows.length; i++) {
                 var source = {
-                    id:result.rows.item(i).id,
-                    name : result.rows.item(i).name,
+                    id: result.rows.item(i).id,
+                    name: result.rows.item(i).name,
                     subject: result.rows.item(i).subject
                 };
 
                 $scope.SecondTeams.push(source);
             }
+
         });
 
 
     }
 
-    $scope.updateGameTypes = function (){
+    $scope.updateGameTypes = function () {
 
         GameTypes.getAll().then(function (result) {
             $scope.GameTypes = [];
@@ -123,48 +132,92 @@ angular.module('starter.controllers', ['starter.sqlService'])
             for (var i = 0; i < result.rows.length; i++) {
 
                 var source = {
-                    id:result.rows.item(i).id,
-                    name : result.rows.item(i).name,
+                    id: result.rows.item(i).id,
+                    name: result.rows.item(i).name,
                     subject: result.rows.item(i).subject
                 };
 
 
                 $scope.GameTypes.push(source);
             }
+
         });
     }
- var teamm = $scope.firstTeam.name;
 
     $scope.updateFirstTeams();
     $scope.updateSecondTeams();
     $scope.updateGameTypes();
 
-    $scope.startGame = function(){
-        
-        alert(angular.isDefined($scope.firstTeam.name));
-        alert(angular.isDefined($scope.firstTeam.name));
-        alert(teamm);
 
-        /*
-        console.log("Aqui esta el valor " + $scope.FirstTeam);
-        console.log("Aqui esta el valor " + $scope.FirstTeam);
-        console.log("Aqui esta el valor " + $scope.FirstTeam);
-        console.log("Aqui esta el valor " + $scope.FirstTeam);
-        console.log("Aqui esta el valor " + $scope.FirstTeam);
-        console.log("Aqui esta el valor " + $scope.FirstTeam);
-        console.log("Aqui esta el valor " + $scope.FirstTeam);
-        console.log("Aqui esta el valor " + $scope.FirstTeam);
-        console.log("Aqui esta el valor " + $scope.FirstTeam);
-        console.log("Aqui esta el valor " + $scope.FirstTeam);
-        console.log("Aqui esta el valor " + $scope.FirstTeam);
-        console.log("Aqui esta el valor " + $scope.FirstTeam);
-        console.log("Aqui esta el valor " + $scope.FirstTeam);
-        console.log("Aqui esta el valor " + $scope.FirstTeam);
-        console.log("Aqui esta el valor " + $scope.FirstTeam);
-        console.log("Aqui esta el valor " + $scope.FirstTeam);
-        console.log("Aqui esta el valor " + $scope.FirstTeam);*/
+
+
+
+    $scope.startGame = function () {
+
+        if ($scope.entry.firstTeam == '' || $scope.entry.secondTeam == '' || $scope.entry.gameType == '') {
+            alert("Complete the form");
+            return;
+        }
+
+        var source = [
+            $scope.entry.firstTeam.id,
+            $scope.entry.secondTeam.id,
+            $scope.entry.gameType.id,
+            0,
+            0,
+            false
+        ]
+
+        Entries.create(source).then(function (result) {
+            debugger;
+            //alert("Done ");
+            $state.go('scoreBoard',{entryId:result.insertId});
+
+        }, function (error) {
+            alert("fail");
+        });
 
     }
+
+
+
+
+})
+
+.controller('ScoreBoardCtrl', function ($scope, $cordovaSQLite, $stateParams) {
+
+    debugger;
+    $scope.scoreFirstTeam = 0;
+    $scope.scoreSecondTeam = 0;
+
+    $scope.points = {
+        firstTeam : 0,
+        secondTeam: 0
+    }
+
+    $scope.addPointFirstTeam = function(){
+
+        $scope.scoreFirstTeam = $scope.scoreFirstTeam + $scope.points.firstTeam;
+    }
+
+    $scope.subPointFirstTeam = function(){
+
+        $scope.scoreFirstTeam = $scope.scoreFirstTeam - $scope.points.firstTeam;
+    }
+    
+    $scope.addPointSecondTeam = function(){
+
+        $scope.scoreSecondTeam = $scope.scoreSecondTeam + $scope.points.secondTeam;
+    }
+    
+    $scope.subPointSecondTeam = function(){
+
+        $scope.scoreSecondTeam = $scope.scoreSecondTeam - $scope.points.secondTeam;
+    }
+
+
+
+
 
 
 

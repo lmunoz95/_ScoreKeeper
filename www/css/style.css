@@ -1,5 +1,5 @@
 /* Empty. Add your own CSS if you like */
- .bar-header.has-tabs-top{
+ .bar-header.has-tabs-top {
      background: rgb(56, 126, 245) !important;
 }
  .bar-header.has-tabs-top {
@@ -16,13 +16,21 @@
  .title {
      align-content: center;
 }
- .ion-fireball{
+ .ion-fireball {
      color: white !important;
 }
- .score-board {
-     .score-table{
-         align-content: center;
-         margin-left: 40%;
-    }
+ .scoreTable {
+     align-content: center !important;
+     background: transparent;
+}
+ .scorePoints {
+     font-size: -webkit-xxx-large !important;
+     color: white !important;
+}
+ .boardFirstTeam{
+     background: rgb(105, 132, 255);
+}
+ .boardSecondTeam{
+     background: rgb(251, 98, 98);
 }
  

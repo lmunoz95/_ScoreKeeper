@@ -2,19 +2,56 @@
     <ion-content>
         <div class="row">
             <div class="col col-50">
-                <div class="card">
-                    <div class="item score-table">
-                        <span ng-bind="scoreFirstTeam"></span>
+                <div class="card boardFirstTeam">
+                    <div class="item scoreTable">
+                        <span class="scorePoints" ng-bind="scoreFirstTeam"></span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <input ng-model = "points.firstTeam" type="number" style="border-style: solid;border-width: thin; border-color: rgb(242, 238, 238);">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col col-50">
+                        <button class="button button-outline button-block  button-balanced" ng-Click="addPointFirstTeam()">
+                            +
+                        </button>
+                    </div>
+                    <div class="col col-50">
+                        <button class="button button-outline button-block  button-assertive" ng-Click="subPointFirstTeam()">
+                            -
+                        </button>
                     </div>
                 </div>
             </div>
             <div class="col col-50">
-                <div class="card">
-                    <div class="item score-table">
-                        <span ng-bind="scoreSecondTeam"></span>
+                <div class="card boardSecondTeam">
+                    <div class="item scoreTable">
+                        <span class="scorePoints" ng-bind="scoreSecondTeam"></span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <input ng-model = "points.secondTeam" type="number" style="border-style: solid;border-width: thin; border-color: rgb(242, 238, 238);">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col col-50">
+                        <button class="button button-outline button-block  button-balanced" ng-Click="addPointSecondTeam()">
+                            +
+                        </button>
+                    </div>
+                    <div class="col col-50">
+                        <button class="button button-outline button-block  button-assertive" ng-Click="subPointSecondTeam()">
+                            -
+                        </button>
                     </div>
                 </div>
             </div>
         </div>
+        <button class="button button-block button-assertive" ng-Click="startGame()">
+            End Game
+        </button>
     </ion-content>
 </ion-view>

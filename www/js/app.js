@@ -8,10 +8,15 @@
 
 var db = null;
 
-angular.module('starter', ['ionic', 'starter.sqlService','starter.controllers', 'starter.services','ngCordova'])
+angular.module('starter', ['ionic',
+                           'starter.sqlService',
+                           'starter.controllers',
+                           'starter.services',
+                           'ngCordova',
+                           'starter.database'])
 
-.run(function($ionicPlatform, $cordovaSQLite, DB) {
-    $ionicPlatform.ready(function() {
+.run(function ($ionicPlatform, $cordovaSQLite, DB) {
+    $ionicPlatform.ready(function () {
         // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
         // for form inputs)
         if (window.cordova && window.cordova.plugins.Keyboard) {
@@ -21,14 +26,14 @@ angular.module('starter', ['ionic', 'starter.sqlService','starter.controllers', 
             // org.apache.cordova.statusbar required
             StatusBar.styleDefault();
         }
-        
         //$cordovaSQLite.deleteDB(dbConfig.name);
         DB.init();
 
     });
 })
 
-.config(function($stateProvider, $urlRouterProvider) {
+
+.config(function ($stateProvider, $urlRouterProvider) {
 
     // Ionic uses AngularUI Router which uses the concept of states
     // Learn more here: https://github.com/angular-ui/ui-router
@@ -84,6 +89,12 @@ angular.module('starter', ['ionic', 'starter.sqlService','starter.controllers', 
                 controller: 'EntryCtrl'
             }
         }
+    })
+
+    .state('scoreBoard', {
+        url: '#/scoreboard/:entryId',
+        templateUrl: 'templates/score-board.html',
+        controller: 'ScoreBoardCtrl'
     });
 
     // if none of the above states are matched, use this as the fallback

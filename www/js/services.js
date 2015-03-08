@@ -62,9 +62,10 @@ angular.module('starter.services', ['starter.sqlService'])
 
         },
         create: function (data) {
-            var query = "INSERT INTO team (name,subject) VALUES (?,?)";
-            console.log("Data for create ROW " + data.name + " " + data.subject);
-            return DB.query(query, [data.name, data.subject]);
+            debugger;
+            var query = "INSERT INTO entry (id_first_team,id_second_team,game_type_id,score_first_team,score_second_team,finish_flag) VALUES (?,?,?,?,?,?)";
+           //console.log("Data for create ROW " + data.name + " " + data.subject);
+            return DB.query(query, data);
 
         }
     }
